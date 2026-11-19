@@ -1,0 +1,14 @@
+{
+  "name": "conuco",
+  "private": true,
+  "type": "module",
+  "description": "Conuco: ventas verificables con el dinero que pasa por el Banco Agrícola.",
+  "scripts": {
+    "start": "node servidor.mjs",
+    "test": "node pruebas.mjs"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "0.5.8"
+  },
+  "engines": { "node": ">=20" }
+}

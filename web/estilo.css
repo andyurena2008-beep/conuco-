@@ -1,0 +1,166 @@
+/* Conuco: los colores y formas salen del diseño de Figma (crema, verde bosque y lima).
+   Sin framework: son cuatro vistas y un puñado de piezas que se repiten. */
+:root {
+  --crema: #f6f4ec;
+  --blanco: #fff;
+  --bosque: #164a30;
+  --bosque-hondo: #0f3a25;
+  --lima: #c6f03c;
+  --lima-suave: #eef5d8;
+  --tinta: #17221b;
+  --gris: #5f6b62;
+  --linea: #e4e2d8;
+  --rojo: #b3261e;
+  --rojo-suave: #fdecea;
+  --ambar: #8a5300;
+  --ambar-suave: #fbefd9;
+  --barra: #1e2622;
+  --radio: 16px;
+}
+* { box-sizing: border-box; margin: 0; }
+body { background: var(--crema); color: var(--tinta); font: 15px/1.45 Inter, system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+button, input, select, textarea { font: inherit; color: inherit; }
+em { font-style: italic; font-weight: 300; }
+
+/* Barra de arriba */
+.barra { position: sticky; top: 0; z-index: 5; background: var(--barra); color: #fff; display: flex; align-items: center; gap: 24px; padding: 0 24px; height: 60px; }
+.marca { color: #fff; text-decoration: none; font-size: 21px; letter-spacing: .04em; display: flex; align-items: center; gap: 6px; }
+.marca svg { width: 24px; height: 24px; fill: none; stroke: var(--lima); stroke-width: 2.2; stroke-linecap: round; }
+.barra nav { display: flex; gap: 4px; margin-right: auto; }
+.barra nav a { color: #c9d1cb; text-decoration: none; padding: 7px 12px; border-radius: 99px; font-weight: 500; font-size: 14px; }
+.barra nav a:hover { color: #fff; }
+.barra nav a[aria-current="page"] { background: var(--lima); color: var(--bosque-hondo); }
+.reiniciar { background: none; border: 1px solid #4a554e; color: #c9d1cb; border-radius: 99px; padding: 6px 12px; font-size: 13px; cursor: pointer; }
+.reiniciar:hover { color: #fff; border-color: #c9d1cb; }
+
+main { padding: 32px 16px 80px; }
+.cargando, .vacio { color: var(--gris); text-align: center; padding: 32px 0; }
+.angosta { max-width: 440px; margin: 0 auto; }
+.ancha { max-width: 980px; margin: 0 auto; }
+
+/* Títulos con la palabra en cursiva fina, como en Figma */
+.etiqueta { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--gris); margin-bottom: 8px; }
+.etiqueta::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--lima); }
+h1 { font-size: 30px; line-height: 1.1; font-weight: 700; letter-spacing: -.02em; }
+h2 { font-size: 19px; font-weight: 700; letter-spacing: -.01em; margin: 32px 0 4px; }
+.sub { color: var(--gris); margin-top: 6px; }
+.chico { font-size: 13px; color: var(--gris); }
+
+.tarjeta { background: var(--blanco); border: 1px solid var(--linea); border-radius: var(--radio); padding: 16px; }
+.lista { display: grid; gap: 8px; margin-top: 12px; padding: 0; list-style: none; }
+
+/* Botones: el principal es la cápsula verde con el círculo lima y la flecha */
+.boton { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; background: var(--bosque); color: #fff; border: 0; border-radius: 99px; padding: 8px 8px 8px 20px; min-height: 48px; font-weight: 600; cursor: pointer; text-align: left; }
+.boton::after { content: ""; flex: none; width: 32px; height: 32px; border-radius: 50%; background: var(--lima) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23164a30' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14m-6-6 6 6-6 6'/%3E%3C/svg%3E") center / 18px no-repeat; }
+.boton:hover { background: var(--bosque-hondo); }
+.boton:disabled { opacity: .55; cursor: default; }
+.secundario { background: none; border: 1.5px solid var(--bosque); color: var(--bosque); border-radius: 99px; padding: 9px 16px; font-weight: 600; cursor: pointer; }
+.secundario:hover { background: var(--lima-suave); }
+.peligro { border-color: var(--rojo); color: var(--rojo); }
+.peligro:hover { background: var(--rojo-suave); }
+
+/* Cápsulas de estado */
+.estado { display: inline-block; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 99px; white-space: nowrap; }
+.verificada { background: var(--lima-suave); color: var(--bosque); }
+.retenida { background: var(--rojo-suave); color: var(--rojo); }
+.pendiente { background: var(--ambar-suave); color: var(--ambar); }
+
+/* Resumen de la productora: la tarjeta oscura de la última pantalla de Figma */
+.resumen { background: var(--bosque-hondo); color: #c9d6cc; border-radius: 20px; padding: 20px; margin-top: 20px; }
+.resumen .cifra { font-size: 38px; font-weight: 700; color: #fff; letter-spacing: -.02em; line-height: 1.1; margin-top: 4px; }
+.resumen .cifra em { color: var(--lima); }
+.trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 16px; }
+.trio div { background: rgba(255,255,255,.06); border-radius: 12px; padding: 10px 12px; }
+.trio b { display: block; color: #fff; font-size: 20px; }
+.trio span { font-size: 12px; }
+.tope { margin-top: 16px; font-size: 13px; }
+.tope .riel { height: 8px; border-radius: 99px; background: rgba(255,255,255,.12); margin-top: 6px; overflow: hidden; }
+.tope .riel i { display: block; height: 100%; background: var(--lima); border-radius: 99px; }
+.tope.pasado .riel i { background: #ff8a80; }
+
+/* Una venta o un pedido */
+.venta { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; align-items: center; }
+.venta b { font-weight: 600; }
+.venta .monto { font-weight: 700; text-align: right; }
+.venta .chico { grid-column: 1; }
+.venta .estado { justify-self: end; }
+.alarma { grid-column: 1 / -1; display: flex; gap: 6px; align-items: flex-start; font-size: 13px; color: var(--rojo); margin-top: 6px; }
+.alarma svg, .nota svg { flex: none; width: 16px; height: 16px; margin-top: 1px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.nueva { animation: nueva 1.6s ease-out; }
+@keyframes nueva { from { box-shadow: 0 0 0 4px var(--lima); } to { box-shadow: 0 0 0 0 transparent; } }
+
+/* Inventario */
+.fila-inv { display: grid; grid-template-columns: 1fr 88px 88px; gap: 8px; align-items: center; }
+.fila-inv label { font-weight: 600; text-transform: capitalize; }
+.campo { width: 100%; border: 1px solid var(--linea); background: var(--blanco); border-radius: 10px; padding: 9px 11px; }
+.campo:focus, .boton:focus-visible, .secundario:focus-visible { outline: 2px solid var(--bosque); outline-offset: 2px; }
+.leyenda { display: grid; grid-template-columns: 1fr 88px 88px; gap: 8px; font-size: 12px; color: var(--gris); margin-top: 12px; padding: 0 16px; }
+
+/* Permisos: el interruptor de Figma */
+.permiso { display: grid; grid-template-columns: 36px 1fr auto; gap: 4px 12px; align-items: center; }
+.permiso .icono { width: 36px; height: 36px; border-radius: 10px; background: var(--lima-suave); display: grid; place-items: center; }
+.permiso .icono svg { width: 18px; height: 18px; fill: none; stroke: var(--bosque); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.permiso p { grid-column: 1 / -1; font-size: 13px; color: var(--gris); }
+.interruptor { appearance: none; width: 44px; height: 26px; border-radius: 99px; background: #cfd3cc; position: relative; cursor: pointer; transition: background .2s; }
+.interruptor::after { content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: #fff; transition: transform .2s; box-shadow: 0 1px 2px rgba(0,0,0,.2); }
+.interruptor:checked { background: var(--bosque); }
+.interruptor:checked::after { transform: translateX(18px); }
+.interruptor:focus-visible { outline: 2px solid var(--bosque); outline-offset: 2px; }
+.ley { font-size: 12px; color: var(--gris); text-align: center; margin-top: 12px; }
+
+/* Chat de WhatsApp */
+.chat { background: #efeae2; border-radius: 20px; padding: 16px; display: grid; gap: 8px; margin-top: 16px; min-height: 260px; align-content: start; }
+.globo { max-width: 85%; padding: 8px 12px; border-radius: 12px; background: var(--blanco); box-shadow: 0 1px 1px rgba(0,0,0,.08); white-space: pre-line; }
+.globo.yo { justify-self: end; background: #d9fdd3; }
+.globo.sistema { justify-self: center; background: rgba(255,255,255,.7); font-size: 12px; color: var(--gris); text-align: center; box-shadow: none; }
+.globo .boton { margin-top: 10px; }
+.pedir { display: grid; grid-template-columns: 1fr 96px; gap: 8px; margin-top: 12px; }
+.pedir .boton { grid-column: 1 / -1; }
+
+/* Avisos */
+.nota { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; padding: 12px 14px; border-radius: 12px; background: var(--lima-suave); color: var(--bosque); margin-top: 12px; }
+.nota.mala { background: var(--rojo-suave); color: var(--rojo); }
+.aviso { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: var(--barra); color: #fff; padding: 12px 18px; border-radius: 99px; font-weight: 500; box-shadow: 0 8px 24px rgba(0,0,0,.2); max-width: calc(100% - 32px); }
+
+/* Banco */
+.columnas { display: grid; grid-template-columns: 320px 1fr; gap: 24px; margin-top: 24px; align-items: start; }
+.columnas > * { min-width: 0; } /* sin esto, el CSV largo ensancha la columna y la página se sale por la derecha */
+.opciones { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.opcion { border: 1.5px solid var(--linea); background: var(--blanco); border-radius: 12px; padding: 10px 14px; cursor: pointer; text-align: left; }
+.opcion small { display: block; color: var(--gris); font-size: 12px; }
+.opcion[aria-pressed="true"] { border-color: var(--bosque); background: var(--lima-suave); }
+.pila { display: grid; gap: 12px; }
+.pila label { display: grid; gap: 4px; font-size: 13px; font-weight: 600; }
+.cuatro { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 16px; }
+.cuatro div { background: var(--blanco); border: 1px solid var(--linea); border-radius: 12px; padding: 12px; }
+.cuatro b { display: block; font-size: 20px; }
+.cuatro span { font-size: 12px; color: var(--gris); }
+table { width: 100%; border-collapse: collapse; margin-top: 16px; background: var(--blanco); border: 1px solid var(--linea); border-radius: var(--radio); overflow: hidden; font-size: 14px; }
+th { text-align: left; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--gris); font-weight: 600; padding: 10px 12px; border-bottom: 1px solid var(--linea); }
+td { padding: 10px 12px; border-bottom: 1px solid var(--linea); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td:first-child { white-space: nowrap; }
+textarea.campo { font: 12px/1.5 ui-monospace, Menlo, monospace; min-height: 96px; resize: vertical; }
+
+/* Registro encadenado */
+.cadena-estado { display: flex; gap: 12px; align-items: center; padding: 16px 20px; border-radius: var(--radio); margin-top: 20px; font-weight: 600; }
+.cadena-estado svg { flex: none; width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.cadena-estado.bien { background: var(--lima-suave); color: var(--bosque); }
+.cadena-estado.mal { background: var(--rojo-suave); color: var(--rojo); }
+.acciones { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.eslabon td:nth-child(3), .eslabon td:nth-child(4) { font: 12px ui-monospace, Menlo, monospace; color: var(--gris); }
+.eslabon.roto { background: var(--rojo-suave); }
+.eslabon.roto td { color: var(--rojo); }
+
+@media (max-width: 760px) {
+  .barra { gap: 12px; padding: 0 16px; height: auto; flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px; }
+  .barra nav { order: 3; width: 100%; overflow-x: auto; margin: 0; }
+  .reiniciar { margin-left: auto; }
+  main { padding-top: 24px; }
+  .columnas { grid-template-columns: 1fr; }
+  .cuatro { grid-template-columns: repeat(2, 1fr); }
+  .tabla-envuelta { overflow-x: auto; }
+  .eslabon td:nth-child(3), .cadena th:nth-child(3) { display: none; } /* en el teléfono basta con la huella de cada fila */
+  h1 { font-size: 26px; }
+}

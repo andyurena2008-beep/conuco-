@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conuco</title>
+<meta name="theme-color" content="#1e2622">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%23c6f03c'/%3E%3Cpath d='M12 19v-7m0 0c0-3 2-5 5-5 0 3-2 5-5 5Zm0 0c0-2.5-1.8-4-4-4 0 2.4 1.6 4 4 4Z' fill='none' stroke='%23164a30' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<!-- La barra de la demo: en producción cada vista es de una persona distinta
+     (la productora en su teléfono, el comprador en WhatsApp, el banco en su portal). -->
+<header class="barra">
+  <a class="marca" href="#productora" aria-label="Conuco, inicio">CONUCO <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21v-9m0 0c0-4 2.6-6.5 6.5-6.5 0 4-2.6 6.5-6.5 6.5Zm0 0c0-3.2-2.3-5.2-5.3-5.2 0 3.1 2.1 5.2 5.3 5.2Z"/></svg></a>
+  <nav aria-label="Vistas de la demo">
+    <a href="#productora">Productora</a>
+    <a href="#comprador">Comprador</a>
+    <a href="#banco">Banco</a>
+    <a href="#registro">Registro</a>
+  </nav>
+  <button class="reiniciar" type="button" id="reiniciar">Reiniciar demo</button>
+</header>
+
+<main id="vista" aria-live="polite">
+  <p class="cargando">Cargando…</p>
+</main>
+
+<div class="aviso" id="aviso" role="status" hidden></div>
+
+<script src="app.js"></script>
+</body>
+</html>
